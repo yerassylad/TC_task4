@@ -48,6 +48,10 @@ class Train
     @route.stations[@position + 1] if less?
   end
 
+  def to_s
+    "Поезд тип #{@type} номер #{@number}"
+  end
+
   protected
 
   def less?

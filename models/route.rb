@@ -12,4 +12,8 @@ class Route
   def delete_station(station)
     @stations.delete(station)
   end
+
+  def to_s
+    "Маршрут #{@stations.first.name} - #{@stations.last.name}"
+  end
 end

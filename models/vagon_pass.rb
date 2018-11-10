@@ -1,6 +1,6 @@
 require_relative 'vagon.rb'
 
-class CargoVagon < Vagon
+class PassangerVagon < Vagon
   def initialize(number)
     super
     @type = :passanger
