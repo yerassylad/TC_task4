@@ -5,6 +5,8 @@ class Interface
     @main = Main.new
   end
 
+
+
   def create_station
     puts "Вы создаете Новую станцию. Введите название станции"
     name = gets.chomp
@@ -21,6 +23,28 @@ class Interface
     show_stations
     last = @main.select_station(gets.chomp.to_i)
     @main.create_route(first, last)
+    show_routes
+  end
+
+  def add_station_to_route
+    puts "Вы добавляете станцию к маршруту. Выберите маршрут для управления"
+    show_routes
+    route = @main.select_route(gets.chomp.to_i)
+    puts "Выберте станцию для добавления"
+    show_stations
+    station = @main.select_station(gets.chomp.to_i)
+    route.add_station(station)
+    show_routes
+  end
+
+  def delete_station_from_route
+    puts "Вы удаляете станцию из маршрута. Выберите маршрут для управления"
+    show_routes
+    route = @main.select_route(gets.chomp.to_i)
+    puts "Выберте станцию для удаления"
+    show_stations
+    station = @main.select_station(gets.chomp.to_i)
+    route.delete_station(station)
     show_routes
   end
 
@@ -53,8 +77,6 @@ class Interface
     @main.create_vagon_pass(number)
     show_vagons
   end
-
-  private
 
   def show_menu
     puts "1 Создавать станции"
@@ -113,5 +135,6 @@ class Interface
 end
 
 i = Interface.new
-i.create_cargo_vagon
-i.create_pass_vagon
+i.add_station_to_route
+i.delete_station_from_route
+
