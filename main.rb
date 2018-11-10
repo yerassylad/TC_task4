@@ -25,7 +25,7 @@ class Main
   end
 
   def create_train_cargo(number)
-    @trains.push(CargTrain.new(number))
+    @trains.push(CargoTrain.new(number))
   end
 
   def create_train_pass(number)

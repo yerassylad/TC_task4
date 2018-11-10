@@ -5,7 +5,36 @@ class Interface
     @main = Main.new
   end
 
-  def menu
+  def create_station
+    puts "Вы создаете Новую станцию. Введите название станции"
+    name = gets.chomp
+    @main.create_station(name)
+    show_stations
+  end
+
+  def create_route
+    puts "Вы создаете Новый маршрут"
+    puts "Выберите начальную станцию"
+    show_stations
+    first = @main.select_station(gets.chomp.to_i)
+    puts "Выберите конечную станцию"
+    show_stations
+    last = @main.select_station(gets.chomp.to_i)
+    @main.create_route(first, last)
+    show_routes
+  end
+
+  def create_cargo_train
+    puts "Вы создаете новый грузовой поезд"
+    puts "Введите номер поезда"
+    number = gets.chomp
+    @main.create_train_cargo(number)
+    show_trains
+  end
+
+  private
+
+  def show_menu
     puts "1 Создавать станции"
     puts "2 Создавать поезда"
     puts "3 Создавать маршруты и управлять станциями в нем (добавлять, удалять)"
@@ -62,7 +91,4 @@ class Interface
 end
 
 i = Interface.new
-i.show_trains
-i.show_routes
-i.show_stations
-i.show_vagons
+i.create_cargo_train
