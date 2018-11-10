@@ -111,6 +111,42 @@ class Interface
     show_trains
   end
 
+  def mv_forward
+    puts "Вы перемещаете поезд вперед. Выберите поезд"
+    show_trains
+    train = @main.select_train(gets.chomp.to_i)
+    puts train.current_station
+    train.forward
+    puts train.current_station
+  end
+
+  def mv_revers
+    puts "Вы перемещаете поезд назад. Выберите поезд"
+    show_trains
+    train = @main.select_train(gets.chomp.to_i)
+    puts train.current_station
+    train.revers
+    puts train.current_station
+  end
+
+  def add_train_to_station
+    puts "Вы добавляете поезд на станциюю Выберите станцию"
+    show_stations
+    station = @main.select_station(gets.chomp.to_i)
+    puts "Выберите поезд"
+    show_trains
+    train = @main.select_train(gets.chomp.to_i)
+    station.take_train(train)
+    show_stations
+  end
+
+  def show_trains_on_station
+    puts "Выберите станцию"
+    show_stations
+    station = @main.select_station(gets.chomp.to_i)
+    station.trains.each { |train| puts train }
+  end
+
   def show_menu
     puts "1 Создавать станции"
     puts "2 Создавать поезда"
@@ -168,5 +204,6 @@ class Interface
 end
 
 i = Interface.new
-i.add_vagon_to_train
-i.delete_vagon_from_train
+i.add_train_to_station
+i.add_train_to_station
+i.show_trains_on_station
