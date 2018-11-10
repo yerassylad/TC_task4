@@ -1,10 +1,9 @@
 class Train
-  attr_reader :speed, :amount_vgns,:number, :type
+  attr_reader :speed, :vagons, :number, :type
 
-  def initialize(number, type, amount_vgns)
+  def initialize(number)
     @number = number
-    @type = type
-    @amount_vgns = amount_vgns
+    @vagons = []
     @speed = 0
   end
 
@@ -16,12 +15,12 @@ class Train
     @speed = 0
   end
 
-  def add_vagon
-    @amount_vgns += 1 if @speed == 0
+  def add_vagon(vagon)
+    @vagons.push(vagon) if @speed == 0 && vagon.type == @type
   end
 
-  def drop_vagon
-    @amount_vgns -= 1 if @speed == 0 && @amount_vgns > 0
+  def drop_vagon(vagon)
+    @vagons.delete(vagon) if @speed == 0
   end
 
   def accept_route(route)
@@ -49,7 +48,7 @@ class Train
     @route.stations[@position + 1] if less?
   end
 
-  private
+  protected
 
   def less?
     @position < @route.stations.size - 1
