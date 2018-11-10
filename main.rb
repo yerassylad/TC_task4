@@ -37,7 +37,7 @@ class Main
   end
 
   def create_vagon_pass(number)
-    @vagons.push(PassangerVagon.new(numer))
+    @vagons.push(PassangerVagon.new(number))
   end
 
   def select_station(index)

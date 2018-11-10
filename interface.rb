@@ -39,6 +39,21 @@ class Interface
     show_trains
   end
 
+  def create_cargo_vagon
+    puts "Вы создаете новый грузовой вагон"
+    puts "Введите номер вагона"
+    number = gets.chomp
+    @main.create_vagon_cargo(number)
+    show_vagons
+  end
+
+  def create_pass_vagon
+    puts "Вы создаете новый пассажирский вагон. Введите номер вагона"
+    number = gets.chomp
+    @main.create_vagon_pass(number)
+    show_vagons
+  end
+
   private
 
   def show_menu
@@ -98,5 +113,5 @@ class Interface
 end
 
 i = Interface.new
-i.create_cargo_train
-i.create_pass_train
+i.create_cargo_vagon
+i.create_pass_vagon
