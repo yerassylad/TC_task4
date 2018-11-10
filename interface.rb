@@ -100,6 +100,17 @@ class Interface
     show_trains
   end
 
+  def delete_vagon_from_train
+    puts "Вы удаляете вагон от поезду. выберите поезд"
+    show_trains
+    train = @main.select_train(gets.chomp.to_i)
+    puts "Выберите вагон"
+    show_vagons
+    vagon = @main.select_vagon(gets.chomp.to_i)
+    train.drop_vagon(vagon)
+    show_trains
+  end
+
   def show_menu
     puts "1 Создавать станции"
     puts "2 Создавать поезда"
@@ -158,4 +169,4 @@ end
 
 i = Interface.new
 i.add_vagon_to_train
-
+i.delete_vagon_from_train
