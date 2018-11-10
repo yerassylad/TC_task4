@@ -49,7 +49,7 @@ class Train
   end
 
   def to_s
-    "Поезд тип #{@type} номер #{@number}"
+    "Поезд тип #{@type} номер #{@number} || #{@route} || #{@vagons}"
   end
 
   protected

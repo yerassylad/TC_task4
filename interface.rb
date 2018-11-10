@@ -63,6 +63,17 @@ class Interface
     show_trains
   end
 
+  def add_route_to_train
+    puts "Вы добавляете маршрут поезду. Выберите поезд"
+    show_trains
+    train = @main.select_train(gets.chomp.to_i)
+    puts "Выберите маршрут"
+    show_routes
+    route = @main.select_route(gets.chomp.to_i)
+    train.accept_route(route)
+    show_trains
+  end
+
   def create_cargo_vagon
     puts "Вы создаете новый грузовой вагон"
     puts "Введите номер вагона"
@@ -76,6 +87,17 @@ class Interface
     number = gets.chomp
     @main.create_vagon_pass(number)
     show_vagons
+  end
+
+  def add_vagon_to_train
+    puts "Вы добавляете вагон к поезду. выберите поезд"
+    show_trains
+    train = @main.select_train(gets.chomp.to_i)
+    puts "Выберите вагон"
+    show_vagons
+    vagon = @main.select_vagon(gets.chomp.to_i)
+    train.add_vagon(vagon)
+    show_trains
   end
 
   def show_menu
@@ -135,6 +157,5 @@ class Interface
 end
 
 i = Interface.new
-i.add_station_to_route
-i.delete_station_from_route
+i.add_vagon_to_train
 
